@@ -2,6 +2,19 @@ view: order_items {
   sql_table_name: demo_db.order_items ;;
   drill_fields: [id]
 
+  dimension: status {
+    sql: ${TABLE}.status ;;
+    html:<a href="#drillmenu" target="_self">
+          {% if value == 'CANCELLED' %}
+            <p style="color: black; background-color: lightblue; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% elsif value == 'COMPLETED' %}
+            <p style="color: black; background-color: lightgreen; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% else %}
+            <p style="color: black; background-color: orange; font-size:100%; text-align:center">{{ rendered_value }}</p>
+          {% endif %}
+      ;;
+  }
+
   dimension: id {
     primary_key: yes
     type: number
