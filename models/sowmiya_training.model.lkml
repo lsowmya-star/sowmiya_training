@@ -12,11 +12,11 @@ datagroup: orders_datagroup
 {
   label: "Orders Datagroup"
   sql_trigger: SELECT MAX(id) FROM orders;;
-  max_cache_age: "30 minutes"
+  max_cache_age: "15 hours"
 }
 datagroup:  users_datagroup {
   sql_trigger: select MAX(id) FROM orders ;;
-  max_cache_age: "15 hours"
+  max_cache_age: "30 minutes"
 }
 persist_with: sowmiya_training_default_datagroup
 persist_with: orders_datagroup
@@ -151,6 +151,7 @@ explore: lrjp14_e1757972862083_testincrementalpdt {}
 explore: map_layer {}
 
 explore: orders {
+  persist_with: users_datagroup
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
