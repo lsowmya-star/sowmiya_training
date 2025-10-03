@@ -52,6 +52,8 @@ explore: customer {}
 
 explore: day_of_week {}
 
+explore: sql_runner_query {}
+
 explore: total_order {}
 
 explore: demo_visits_data {
