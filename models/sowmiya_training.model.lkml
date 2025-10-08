@@ -4,9 +4,17 @@ connection: "thelook"
 include: "/views/**/*.view.lkml"
 
 datagroup: sowmiya_training_default_datagroup {
-    sql_trigger: SELECT COUNT(*) FROM orders ;;
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
+}
+datagroup: orders_pdt_datagroup {
+  sql_trigger: {
+    query: {
+      explore: orders
+      fields: [orders.count]
+    }
+  }
+  max_cache_age: "24 hours"
 }
 
 datagroup: orders_datagroup
