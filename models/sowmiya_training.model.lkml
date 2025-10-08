@@ -4,6 +4,7 @@ connection: "thelook"
 include: "/views/**/*.view.lkml"
 
 datagroup: sowmiya_training_default_datagroup {
+    sql_trigger: SELECT COUNT(*) FROM orders ;;
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
