@@ -7,13 +7,10 @@ datagroup: sowmiya_training_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
-datagroup: orders_pdt_datagroup {
-  sql_trigger: {
-    query: {
-      explore: orders
-      fields: [orders.count]
-    }
-  }
+datagroup: orders_count_trigger {
+  # This SQL query will run every 5 minutes.
+  # If the result of the query changes, the datagroup is triggered.
+  sql_trigger: SELECT COUNT(*) FROM orders;;
   max_cache_age: "24 hours"
 }
 
